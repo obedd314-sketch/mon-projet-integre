@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Mon Panneau de Contrôle</title>
+    <style>
+        /* Un peu de CSS pour rendre ça propre */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+            padding: 50px;
+        }
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #liste-logs {
+            margin-top: 30px;
+            list-style-type: none;
+            padding: 0;
+        }
+        #liste-logs li {
+            background: white;
+            margin: 5px auto;
+            padding: 10px;
+            width: 50%;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Suivi des Logs Système</h1>
+    <button onclick="chargerLesLogs()">Mettre à jour et charger les données</button>
+    
+    <ul id="liste-logs"></ul>
+
+    <script>
+        function chargerLesLogs() {
+            // 1. On fait un appel réseau vers notre serveur Python
+            fetch('http://127.0.0.1:5000/api/logs')
+                .then(reponse => {
+                    // Si le serveur répond, on transforme la réponse en JSON
+                    return reponse.json();
+                })
+                .then(donnees => {
+                    // 2. On récupère l'élément <ul> de notre HTML
+                    const ul = document.getElementById('liste-logs');
+                    ul.innerHTML = ""; // On vide la liste avant d'ajouter les nouveautés
+                    
+                    // 3. On boucle sur chaque ligne reçue de la base de données
+                    donnees.forEach(ligne => {
+                        const id = ligne[0];
+                        const dateHeure = ligne[1];
+                        
+                        // On crée une balise <li> textuelle pour chaque log
+                        const li = document.createElement('li');
+                        li.textContent = `Log n°${id} : Enregistré le ${dateHeure}`;
+                        
+                        // On l'ajoute dans notre liste <ul>
+                        ul.appendChild(li);
+                    });
+                })
+                .catch(erreur => {
+                    // Si le serveur Python est éteint ou s'il y a un bug réseau
+                    console.error("Erreur réseau :", erreur);
+                    alert("Impossible de contacter le serveur Python. Est-il bien démarré ?");
+                });
+        }
+    </script>
+</body>
+</html>
