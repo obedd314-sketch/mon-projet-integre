@@ -233,3 +233,8 @@ li.textContent = ... : On écrit le texte dedans (ex: "Log n°1 : Enregistré le
 ul.appendChild(li) : On injecte cette puce directement dans la page web pour que l'utilisateur la voie.
 
 .catch(erreur => { ... }) : C'est le filet de sécurité. Si le serveur Python est éteint ou si le câble réseau est débranché, le fetch échoue, et c'est ce bloc qui prend le relais pour afficher le message "Impossible de contacter le serveur python".
+
+6. Intégration du Moteur en Langage C
+Pourquoi le C ? Le langage C est un langage compilé de bas niveau. Il est ultra-rapide, consomme très peu de mémoire et possède un accès direct aux fonctions du système d'exploitation. C'est le langage idéal pour créer des "agents" de surveillance ou des collecteurs de données système.
+
+Le système de fichier tampon (flux.txt) : Pour faire communiquer le programme C et le programme Python sans installer de lourdes bibliothèques tierces, nous avons mis en place une communication par fichier. Le C écrit de manière brute, et Python traite la donnée pour l'insérer proprement dans SQLite.
