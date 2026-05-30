@@ -6,7 +6,9 @@
     <title>Obed | Dev Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Courier+New&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="newfile.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 <body>
 
@@ -20,6 +22,7 @@
     </nav>
 
     <main class="container">
+
         <header class="card hero">
             <p class="terminal-prefix">[STATUS: CORE_SYSTEM_ONLINE]</p>
             <h1 class="typewriter">Obed Muanda</h1>
@@ -29,30 +32,30 @@
         </header>
 
         <section id="about" class="card">
-    <h2>// Core System & Terminal</h2>
-    <p>I’m building myself step by step: coding, discipline, and mindset. I focus on learning deeply instead of rushing everything.</p>
-    
-    <div class="terminal-box">
-        <div class="terminal-header">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
-            <span class="terminal-title">obed@syswatch:~</span>
-        </div>
-        <div class="terminal-body">
-            <div id="terminal-history">
-                <p>Welcome to SysWatch OS v1.0. Type <span class="highlight">help</span> for available commands.</p>
+            <h2>// Core System & Terminal</h2>
+            <p>I'm building myself step by step: coding, discipline, and mindset. I focus on learning deeply instead of rushing everything.</p>
+
+            <div class="terminal-box">
+                <div class="terminal-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="terminal-title">obed@syswatch:~</span>
+                </div>
+                <div class="terminal-body">
+                    <div id="terminal-history">
+                        <p>Welcome to SysWatch OS v1.0. Type <span class="highlight">help</span> for available commands.</p>
+                    </div>
+                    <div class="terminal-input-line">
+                        <span class="prompt">obed@syswatch:~$</span>
+                        <input type="text" id="terminal-input" autofocus autocomplete="off" spellcheck="false">
+                    </div>
+                </div>
             </div>
-            <div class="terminal-input-line">
-                <span class="prompt">obed@syswatch:~$</span>
-                <input type="text" id="terminal-input" autofocus autocomplete="off" spellcheck="false">
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
 
         <section id="skills" class="card">
-            <h2><h2>// Skills Matrix</h2></h2>
+            <h2>// Skills Matrix</h2>
             <div class="skills-container">
                 <span class="skill">HTML</span>
                 <span class="skill">CSS</span>
@@ -64,13 +67,13 @@
         </section>
 
         <section id="hobbies" class="card">
-            <h2><h2>// Core Interests</h2></h2>
+            <h2>// Core Interests</h2>
             <p>Calisthenics, language learning, and improving daily habits.</p>
             <p>I also explore drawing, photography, and building small projects.</p>
         </section>
 
         <footer class="card">
-            <h2><h2>// Uplink / Social</h2></h2>
+            <h2>// Uplink / Social</h2>
             <ul class="list-social">
                 <li>
                     <a href="https://www.instagram.com/obedmuanda314" target="_blank" aria-label="Instagram">
@@ -89,21 +92,80 @@
                 </li>
             </ul>
         </footer>
+
     </main>
 
-    <div class="cyber-cursor"></div>
+    <script>
+        // --- Terminal ---
+        const input = document.getElementById('terminal-input');
+        const history = document.getElementById('terminal-history');
 
-<script>
-    // On récupère notre cercle HTML
-    const cursor = document.querySelector('.cyber-cursor');
+        const commands = {
+            help:     `Commandes disponibles : <span class="highlight">about</span> · <span class="highlight">skills</span> · <span class="highlight">projects</span> · <span class="highlight">contact</span> · <span class="highlight">clear</span>`,
+            about:    `Je m'appelle Obed. Étudiant en informatique, je construis mes compétences pas à pas — code, discipline, mindset.`,
+            skills:   `HTML · CSS · Python · C · Networking · Cybersecurity (en cours)`,
+            projects: `Aucun projet listé pour l'instant. Tape <span class="highlight">contact</span> pour me joindre.`,
+            contact:  `Instagram : <a href="https://www.instagram.com/obedmuanda314" target="_blank" style="color:var(--neon-cyan)">@obedmuanda314</a> · X : <a href="https://x.com/OMuanda74713" target="_blank" style="color:var(--neon-cyan)">@OMuanda74713</a>`,
+            clear:    null,
+        };
 
-    // On écoute le mouvement de la souris sur toute la page
-    document.addEventListener('mousemove', (e) => {
-        // On change la position du cercle en fonction des coordonnées de la souris (X et Y)
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-    });
-</script>
+        function addLine(content, isCommand = false) {
+            const p = document.createElement('p');
+            p.innerHTML = content;
+            if (isCommand) p.style.color = '#ffffff';
+            history.appendChild(p);
+            history.scrollTop = history.scrollHeight;
+        }
+
+        input.addEventListener('keydown', (e) => {
+            if (e.key !== 'Enter') return;
+
+            const val = input.value.trim().toLowerCase();
+            input.value = '';
+
+            if (!val) return;
+
+            addLine(`obed@syswatch:~$ ${val}`, true);
+
+            if (val === 'clear') {
+                history.innerHTML = '';
+                return;
+            }
+
+            if (commands[val] !== undefined) {
+                addLine(commands[val]);
+            } else {
+                addLine(`<span style="color:#f87171">Commande inconnue : "${val}". Tape <span class="highlight">help</span> pour l'aide.</span>`);
+            }
+        });
+
+        // --- GSAP ---
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero entrance
+        gsap.from('.terminal-prefix', { opacity: 0, y: -10, duration: 0.6, ease: 'power2.out' });
+        gsap.from('.typewriter',      { opacity: 0, y: 10,  duration: 0.8, delay: 0.3, ease: 'power2.out' });
+        gsap.from('.hero img',        { opacity: 0, scale: 0.85, duration: 0.9, delay: 0.5, ease: 'back.out(1.5)' });
+        gsap.from('.hero-subtitle',   { opacity: 0, y: 10,  duration: 0.6, delay: 0.7, ease: 'power2.out' });
+        gsap.from('.btn',             { opacity: 0, y: 10,  duration: 0.6, delay: 0.9, ease: 'power2.out' });
+
+        // Scroll animations
+        gsap.utils.toArray('.card').forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 90%',
+                },
+                opacity: 0,
+                y: 40,
+                scale: 0.98,
+                filter: 'blur(6px)',
+                duration: 0.8,
+                delay: i * 0.05,
+                ease: 'power3.out',
+            });
+        });
+    </script>
 
 </body>
 </html>
