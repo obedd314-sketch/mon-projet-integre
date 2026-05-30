@@ -1,0 +1,422 @@
+/* --- CONFIGURATION DES COULEURS CYBERPUNK --- */
+:root {
+    --bg-color: #070a13;       /* Sombre profond */
+    --neon-cyan: #00f3ff;      /* Cyan Sci-Fi */
+    --neon-magenta: #a78bfa;   /* Ton violet d'origine boosté */
+    --text-color: #ffffff;
+    --card-bg: rgba(255, 255, 255, 0.03);
+}
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Permet un défilement fluide quand on clique sur la navbar */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #090d16, #111827);
+    background-attachment: fixed;
+    color: var(--text-color);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* --- ÉTAPE 1 : STYLE DE LA NAVBAR --- */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav ul {
+    margin: 0;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    background: rgba(7, 10, 19, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+}
+
+nav ul li {
+    list-style: none;
+    margin: 0 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #cbd5e1;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    position: relative;
+    padding: 5px 0;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 8px var(--neon-cyan);
+}
+
+nav ul li a:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--neon-cyan);
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease-in-out;
+    box-shadow: 0 0 8px var(--neon-cyan);
+}
+
+nav ul li a:hover:before {
+    width: 100%;
+}
+
+/* Structure Container */
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+/* Glassmorphism Card Style */
+.card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 243, 255, 0.05);
+}
+
+/* --- ÉTAPE 2 : EFFETS DU LOGICIEL TERMINAL DANS LA HERO --- */
+.hero {
+    text-align: center;
+    animation: fadeIn 1.2s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.terminal-prefix {
+    color: var(--neon-cyan);
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    text-shadow: 0 0 5px var(--neon-cyan);
+}
+
+.typewriter {
+    font-size: 38px;
+    font-weight: 800;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    margin: 0 auto 15px auto;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid var(--neon-cyan);
+    /* Aligne l'effet d'écriture */
+    width: 100%;
+    max-width: fit-content;
+    animation: 
+        typing 2.5s steps(15, end) forwards,
+        blink-caret 0.75s step-end infinite;
+}
+
+.hero img {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 15px 0;
+    border: 3px solid var(--neon-magenta);
+    box-shadow: 0 0 15px rgba(167, 139, 250, 0.3);
+}
+
+/* Typography */
+h2 {
+    font-size: 18px;
+    font-family: 'Courier New', monospace;
+    margin-bottom: 20px;
+    color: var(--neon-magenta);
+    letter-spacing: 1px;
+}
+
+p {
+    color: #94a3b8;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Button */
+.btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 28px;
+    border-radius: 999px;
+    background: transparent;
+    border: 1px solid var(--neon-cyan);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: rgba(0, 243, 255, 0.1);
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+    transform: scale(1.02);
+}
+
+/* Skills Tags */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill {
+    padding: 8px 18px;
+    border-radius: 8px; /* Look plus rectiligne/technique */
+    background: rgba(255, 255, 255, 0.05);
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.2s;
+}
+
+.skill:hover {
+    border-color: var(--neon-magenta);
+    background: rgba(167, 139, 250, 0.05);
+    color: white;
+}
+
+/* Social Icons */
+.list-social {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+
+.list-social li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.list-social i {
+    font-size: 35px;
+    color: #64748b;
+    transition: 0.3s ease;
+}
+
+.list-social i:hover {
+    color: var(--neon-cyan);
+    transform: translateY(-3px);
+    filter: drop-shadow(0 0 5px var(--neon-cyan));
+}
+
+/* Keyframes Animations */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--neon-cyan); }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Adjustment */
+@media (max-width: 600px) {
+    .typewriter { font-size: 26px; }
+    .container { margin: 20px auto; }
+    nav ul li { margin: 0 10px; }
+}
+/* ==========================================================================
+   PHASE 3 : ANIMATIONS AVANCÉES
+   ========================================================================== */
+
+/* 1. Animation d'apparition au chargement pour toutes les cartes */
+.card {
+    opacity: 0; /* Commence invisible */
+    animation: cyberFadeIn 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* On décale l'apparition de chaque carte pour un effet de cascade stylé */
+.card:nth-child(1) { animation-delay: 0.2s; }
+.card:nth-child(2) { animation-delay: 0.4s; }
+.card:nth-child(3) { animation-delay: 0.6s; }
+.card:nth-child(4) { animation-delay: 0.8s; }
+
+@keyframes cyberFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.98);
+        filter: blur(5px); /* Petit effet de flou high-tech à l'apparition */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* 2. Animation de respiration néon sur la photo de profil */
+.hero img {
+    animation: neonPulse 2s infinite alternate ease-in-out;
+}
+
+@keyframes neonPulse {
+    from {
+        box-shadow: 0 0 10px rgba(167, 139, 250, 0.2), inset 0 0 5px rgba(167, 139, 250, 0.1);
+    }
+    to {
+        box-shadow: 0 0 25px rgba(167, 139, 250, 0.6), inset 0 0 10px rgba(167, 139, 250, 0.4);
+    }
+}
+
+/* 3. Micro-interactions sur les badges de compétences (Skills) */
+.skill {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.skill:hover {
+    color: var(--neon-cyan);
+    border-color: var(--neon-cyan);
+    background: rgba(0, 243, 255, 0.05);
+    transform: translateY(-3px);
+    box-shadow: 0 0 12px rgba(0, 243, 255, 0.3);
+}
+
+/* --- LE CURSEUR CYBERPUNK --- */
+.cyber-cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--neon-cyan);
+    border-radius: 50%;
+    position: fixed;
+    transform: translate(-50%, -50%); /* Centre le cercle sur la pointe de la souris */
+    pointer-events: none; /* Empêche le cercle de bloquer les clics sur les boutons */
+    z-index: 9999; /* Reste toujours au-dessus de tout le reste */
+    box-shadow: 0 0 10px var(--neon-cyan);
+    transition: transform 0.1s ease-out; /* Crée l'effet de fluide et de retard stylé */
+}
+
+/* Optionnel : Cache le vrai curseur de la souris pour ne voir que le tien */
+body {
+    cursor: none;
+}
+/* On remet le curseur pointeur sur les éléments cliquables */
+a, button, .skill {
+    cursor: pointer;
+}
+
+/* --- COMPOSANT TERMINAL INTERACTIF --- */
+.terminal-box {
+    background: #05070c;
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    border-radius: 8px;
+    margin-top: 20px;
+    font-family: 'Courier New', monospace;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+}
+
+.terminal-header {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+
+.terminal-title {
+    color: #64748b;
+    font-size: 0.8rem;
+    margin-left: 10px;
+}
+
+.terminal-body {
+    padding: 15px;
+    font-size: 0.9rem;
+    color: #38bdf8; /* Bleu terminal */
+    text-align: left;
+}
+
+#terminal-history p {
+    color: #38bdf8;
+    margin-bottom: 8px;
+    font-family: 'Courier New', monospace;
+}
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.prompt {
+    color: var(--neon-magenta);
+    margin-right: 10px;
+    white-space: nowrap;
+}
+
+#terminal-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+.highlight {
+    color: var(--neon-cyan);
+    font-weight: bold;
+}
