@@ -92,3 +92,17 @@ body {
     outline: none;
     flex-grow: 1;
 }
+.profile-card {
+    text-align: center;
+    margin-bottom: 20px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+.subtitle {
+    color: #00bcff;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
