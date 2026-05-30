@@ -6,7 +6,7 @@
     <title>Obed | Dev Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Courier+New&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="newfile.css">
 </head>
 <body>
 
@@ -104,6 +104,49 @@
         cursor.style.top = e.clientY + 'px';
     });
 </script>
+
+// --- LOGIQUE DU TERMINAL INTERACTIF ---
+const terminalInput = document.getElementById('terminal-input');
+const terminalHistory = document.getElementById('terminal-history');
+
+terminalInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        const command = this.value.trim().toLowerCase();
+        
+        // 1. Afficher la commande tapée par l'utilisateur dans l'historique
+        const line = document.createElement('p');
+        line.innerHTML = `<span class="prompt">obed@syswatch:~$</span> ${this.value}`;
+        terminalHistory.appendChild(line);
+        
+        // 2. Analyser la commande et générer la réponse
+        const response = document.createElement('p');
+        
+        if (command === 'help') {
+            response.innerHTML = "Available commands: <br> - <span class='highlight'>about</span> : Learn more about my mindset.<br> - <span class='highlight'>skills</span> : Display my technology stack.<br> - <span class='highlight'>clear</span> : Reset terminal screen.";
+        } else if (command === 'about') {
+            response.innerText = "System user 'Obed': Focused on deep engineering, building robust systems, and cross-platform architecture.";
+        } else if (command === 'skills') {
+            response.innerText = "Loaded Modules: HTML, CSS, Python (Flask), C (Agent Engine), Networking protocols.";
+        } else if (command === 'clear') {
+            terminalHistory.innerHTML = '';
+            this.value = '';
+            return;
+        } else if (command === '') {
+            response.innerText = "";
+        } else {
+            response.innerHTML = `Command not found: <span style="color: #ff5f56;">${command}</span>. Type <span class='highlight'>help</span>.`;
+        }
+        
+        // Ajouter la réponse à l'écran et vider le champ de saisie
+        if (response.innerText !== "" || response.innerHTML !== "") {
+            terminalHistory.appendChild(response);
+        }
+        this.value = '';
+        
+        // Auto-scroll vers le bas du terminal
+        terminalInput.scrollIntoView();
+    }
+});
 
 </body>
 </html>
