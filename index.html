@@ -3,13 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Obed | Portfolio Terminal</title>
+    <title>Obed Muanda | Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- Section Profil Fixe -->
+    <div class="profile-card">
+        <h1>💻 Obed Muanda</h1>
+        <p class="subtitle">Étudiant en Informatique & Développeur Systèmes</p>
+        <p>Bienvenue sur mon espace sécurisé. Utilisez le terminal ci-dessous pour explorer mon univers.</p>
+    </div>
+
+    <!-- Le Terminal Interactif -->
     <div class="terminal-container">
-        <!-- Barre supérieure du terminal -->
         <div class="terminal-header">
             <span class="dot red"></span>
             <span class="dot yellow"></span>
@@ -17,13 +24,10 @@
             <div class="terminal-title">obed@cyber-terminal:~</div>
         </div>
 
-        <!-- Zone d'affichage du texte -->
         <div class="terminal-body" id="terminal-content">
-            <p class="system-msg">[SYSTEM] Initialisation du protocole Cyber-Portfolio v1.0...</p>
-            <p class="system-msg">[SYSTEM] Connexion sécurisée établie.</p>
-            <p>Bienvenue. Tapez <span class="highlight">help</span> pour afficher la liste des commandes disponibles.</p>
+            <p class="system-msg">[SYSTEM] Profil de Obed chargé avec succès...</p>
+            <p>Tapez <span class="highlight">help</span> pour voir ce que le terminal peut faire.</p>
             
-            <!-- Ligne d'entrée interactive -->
             <div class="input-line">
                 <span class="prompt">obed@cyber-terminal:~$</span>
                 <input type="text" id="terminal-input" autofocus autocomplete="off">
@@ -31,7 +35,6 @@
         </div>
     </div>
 
-    <!-- Liaison avec le fichier JavaScript -->
     <script src="script.js" defer></script>
 </body>
 </html>
