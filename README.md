@@ -7,4 +7,4 @@ Welcome to my interactive portfolio!
 * Back-End & Systems: Python, C, Networking
 
 ## 🚀 Featured Projects
-* [SysWatch](https://github.com/ton-pseudo/SysWatch) : Cross-platform log monitoring dashboard (C/Python/SQLite).
+* [SysWatch](https://github.com/obedd314-sketch/SysWatch) : Cross-platform log monitoring dashboard (C/Python/SQLite).
