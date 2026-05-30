@@ -3,38 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Obed Muanda | Portfolio</title>
+    <title>Obed | Dev Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Courier+New&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Section Profil Fixe -->
-    <div class="profile-card">
-        <h1>💻 Obed Muanda</h1>
-        <p class="subtitle">Étudiant en Informatique & Développeur Systèmes</p>
-        <p>Bienvenue sur mon espace sécurisé. Utilisez le terminal ci-dessous pour explorer mon univers.</p>
-    </div>
+    <nav>
+        <ul>
+            <li><a href="#">System</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#hobbies">Hobbies</a></li>
+        </ul>
+    </nav>
 
-    <!-- Le Terminal Interactif -->
-    <div class="terminal-container">
+    <main class="container">
+        <header class="card hero">
+            <p class="terminal-prefix">[STATUS: CORE_SYSTEM_ONLINE]</p>
+            <h1 class="typewriter">Obed Muanda</h1>
+            <img src="image/rilley.jpg" alt="Photo de profil de Obed">
+            <p class="hero-subtitle">Computer science student focused on becoming a developer.</p>
+            <a href="https://www.languagereactor.com/" target="_blank" class="btn">Language Tool</a>
+        </header>
+
+        <section id="about" class="card">
+    <h2>// Core System & Terminal</h2>
+    <p>I’m building myself step by step: coding, discipline, and mindset. I focus on learning deeply instead of rushing everything.</p>
+    
+    <div class="terminal-box">
         <div class="terminal-header">
             <span class="dot red"></span>
             <span class="dot yellow"></span>
             <span class="dot green"></span>
-            <div class="terminal-title">obed@cyber-terminal:~</div>
+            <span class="terminal-title">obed@syswatch:~</span>
         </div>
-
-        <div class="terminal-body" id="terminal-content">
-            <p class="system-msg">[SYSTEM] Profil de Obed chargé avec succès...</p>
-            <p>Tapez <span class="highlight">help</span> pour voir ce que le terminal peut faire.</p>
-            
-            <div class="input-line">
-                <span class="prompt">obed@cyber-terminal:~$</span>
-                <input type="text" id="terminal-input" autofocus autocomplete="off">
+        <div class="terminal-body">
+            <div id="terminal-history">
+                <p>Welcome to SysWatch OS v1.0. Type <span class="highlight">help</span> for available commands.</p>
+            </div>
+            <div class="terminal-input-line">
+                <span class="prompt">obed@syswatch:~$</span>
+                <input type="text" id="terminal-input" autofocus autocomplete="off" spellcheck="false">
             </div>
         </div>
     </div>
+</section>
 
-    <script src="script.js" defer></script>
+        <section id="skills" class="card">
+            <h2><h2>// Skills Matrix</h2></h2>
+            <div class="skills-container">
+                <span class="skill">HTML</span>
+                <span class="skill">CSS</span>
+                <span class="skill">Python</span>
+                <span class="skill">C</span>
+                <span class="skill">Networking</span>
+                <span class="skill">Cybersecurity (learning)</span>
+            </div>
+        </section>
+
+        <section id="hobbies" class="card">
+            <h2><h2>// Core Interests</h2></h2>
+            <p>Calisthenics, language learning, and improving daily habits.</p>
+            <p>I also explore drawing, photography, and building small projects.</p>
+        </section>
+
+        <footer class="card">
+            <h2><h2>// Uplink / Social</h2></h2>
+            <ul class="list-social">
+                <li>
+                    <a href="https://www.instagram.com/obedmuanda314" target="_blank" aria-label="Instagram">
+                        <i class="fa-brands fa-square-instagram"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/obed.muandamuanda" target="_blank" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://x.com/OMuanda74713" target="_blank" aria-label="X (Twitter)">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                </li>
+            </ul>
+        </footer>
+    </main>
+
+    <div class="cyber-cursor"></div>
+
+<script>
+    // On récupère notre cercle HTML
+    const cursor = document.querySelector('.cyber-cursor');
+
+    // On écoute le mouvement de la souris sur toute la page
+    document.addEventListener('mousemove', (e) => {
+        // On change la position du cercle en fonction des coordonnées de la souris (X et Y)
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+</script>
+
 </body>
 </html>
